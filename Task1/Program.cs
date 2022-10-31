@@ -35,20 +35,23 @@ void PrintArray(int[,] matrix)
     }
 }
 
-int[,] MyArray = FillArray(row, col);
-PrintArray(MyArray);
+int[,] myArray = FillArray(row, col);
+PrintArray(myArray);
 
-if (MyArray.GetLength(0)!= MyArray.GetLength(1))
+if (myArray.GetLength(0)!= myArray.GetLength(1))
 {
     Console.WriteLine("Невозможно транспонировать");
 }
 else
 {
-    for (int i = 0; i < MyArray.GetLength(0); i++)
+    int[,] newArray = FillArray(myArray.GetLength(0),myArray.GetLength(1));
+    
+    for (int i = 0; i < myArray.GetLength(0); i++)
     {
-        for (int j = 0; j < MyArray.GetLength(1); j++)
+        for (int j = 0; j < myArray.GetLength(1); j++)
         {
-            Console.WriteLine("возможно транспонировать");
+            newArray[i,j] = myArray[j,i];
         }
     }
+    PrintArray(newArray);
 }

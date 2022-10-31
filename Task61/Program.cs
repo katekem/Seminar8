@@ -2,11 +2,6 @@
 // Сделать вывод в виде равнобедренного треугольника
 Console.Clear();
 
-Console.WriteLine("Введите количество строк: ");
-int row = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите количество столбцов: ");
-int col = Convert.ToInt32(Console.ReadLine());
-
 int[,] FillArray(int numLine, int numColumns)
 {
     int[,] matrix = new int[numLine, numColumns];
@@ -35,3 +30,19 @@ void PrintArray(int[,] matrix)
 
 int[,] MyArray = FillArray(row, col);
 PrintArray(MyArray);
+
+int[,] Pascal(int column)
+{
+    int[,] multi = new int[column + 1, column];
+    multi[column/2,0] = 1;
+    int sum = 1;
+    for (int i = 0; i < multi.GetLength(0); i++)
+    {
+        for (int j = 0; j < multi.GetLength(1); j++)
+        {
+            multi[column/2+1,j] = sum;
+            multi[column/2-1,j] = sum;
+        }
+    }
+    return multi;
+}
