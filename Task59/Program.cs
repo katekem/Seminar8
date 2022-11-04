@@ -34,5 +34,23 @@ void PrintArray(int[,] matrix)
     }
 }
 
-int[,] MyArray = FillArray(row, col);
-PrintArray(MyArray);
+int[,] myArray = FillArray(row, col);
+PrintArray(myArray);
+int min = myArray[0,0];
+int minI = 0;
+int minJ = 0;
+for (int i = 0; i < myArray.GetLength(0); i++)
+{
+    for (int j = 0; j < myArray.GetLength(1); j++)
+    {
+        if (myArray[i, j] < min)
+        {
+            min = myArray[i, j];
+            minI = i;
+            minJ = j;
+        }
+    }
+    Console.WriteLine();
+}
+Console.WriteLine($"Индекс строки наименьшего элемента массива = {minI}");
+Console.WriteLine($"Индекс столбца наименьшего элемента массива = {minJ}");
